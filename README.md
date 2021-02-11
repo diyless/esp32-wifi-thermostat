@@ -4,9 +4,6 @@ ESP32 Wi-Fi OpenTherm Thermostat sketch allows you to build simple OpenTherm Wi-
 
 Detailed instructions you can find in [ESP32 Wi-Fi OpenTherm Thermostat](https://diyless.com/blog/esp32-wifi-thermostat) post of [diyless.com](https://diyless.com/Blog) blog.
 
-## ESP32 Wi-Fi OpenTherm Thermostat Components
-![ESP32 Wi-Fi OpenTherm Thermostat Components](https://diyless.com/blog/esp32-wifi-thermostat/esp32-wifi-thermostat.webp)
-
 ## ESP32 Wi-Fi OpenTherm Thermostat Web Server
 ![ESP32 Wi-Fi OpenTherm Thermostat Web Server](https://diyless.com/blog/esp32-wifi-thermostat/esp32-wifi-thermostat-web-server.webp)
 
