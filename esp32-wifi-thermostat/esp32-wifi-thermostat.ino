@@ -2,11 +2,18 @@
  Name:		esp32_wifi_thermostat.ino 
  Author:	DIYLESS
 */
-
+#ifdef ESP32
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <WebServer.h>
 #include <ESPmDNS.h>
+#elif defined(ESP8266)
+#include <ESP8266WiFi.h>
+#include <WiFiClient.h>
+#include <ESP8266WebServer.h>
+#include <ESP8266mDNS.h>
+#endif
+
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <OpenTherm.h>
@@ -23,7 +30,11 @@ const int OT_OUT_PIN = 22; //5 for ESP8266 (D1), 22 for ESP32
 const int ROOM_TEMP_SENSOR_PIN = 18; //14 for ESP8266 (D5), 18 for ESP32
 
 OpenTherm ot(OT_IN_PIN, OT_OUT_PIN);
+#ifdef ESP32
 WebServer server(80);
+#elif defined(ESP8266)
+ESP8266WebServer server(80);
+#endif
 OneWire oneWire(ROOM_TEMP_SENSOR_PIN);
 DallasTemperature sensors(&oneWire);
 
