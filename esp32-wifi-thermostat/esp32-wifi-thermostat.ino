@@ -1,5 +1,5 @@
 /*
- Name:		esp32_wifi_thermostat.ino 
+ Name:		esp32_wifi_thermostat.ino
  Author:	DIYLESS
 */
 #ifdef ESP32
@@ -134,10 +134,10 @@ float pid(float sp, float pv, float pv_last, float& ierr, float dt) {
     // calculate the integral error
     ierr = ierr + KI * error * dt;
     // calculate the measurement derivative
-    float dpv = (pv - pv_last) / dt;
+    //float dpv = (pv - pv_last) / dt;
     // calculate the PID output
     float P = KP * error; //proportional contribution
-    float I = ierr; //integral contribution  
+    float I = ierr; //integral contribution
     float op = P + I;
     // implement anti-reset windup
     if ((op < oplo) || (op > ophi)) {
