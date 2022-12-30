@@ -17,11 +17,11 @@ template <typename T, uint16_t Size>
 class RingBuffer {
 private:
 	const uint16_t size;
-	uint16_t count;
 	T buf[Size];
 	T* write_p;
 	T* read_p;
 	T* end_p;
+	uint16_t count;
 public:
 	RingBuffer() : size(Size), write_p(buf), read_p(buf), end_p(buf + Size), count(0) {}
 
