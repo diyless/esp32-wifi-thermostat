@@ -78,7 +78,7 @@ const char HTTP_INFO[] PROGMEM = "<table width=\"100%\">\
 </table><input type=\"hidden\" id=\"rsp\" value=\"{rsp}\"/>";
 
 
-uint8_t requests[] = {
+OpenThermMessageID requests[] = {
   OpenThermMessageID::Status,
   OpenThermMessageID::TSet,
   OpenThermMessageID::Tboiler,
@@ -490,7 +490,7 @@ void setup(void) {
 
 void processResponse(unsigned long response, OpenThermResponseStatus status) {
     if (!ot.isValidResponse(response)) {
-        Serial.println("Invalid response: " + String(response, HEX) + ", status=" + String(ot.getLastResponseStatus()));
+        Serial.println("Invalid response: " + String(response, HEX) + ", status=" + OpenTherm::statusToString(ot.getLastResponseStatus()));
         return;
     }
     if (curr_item == NULL) {
@@ -499,7 +499,7 @@ void processResponse(unsigned long response, OpenThermResponseStatus status) {
     }
     float t;
     byte id = (response >> 16 & 0xFF);
-    switch (id)
+    switch ((OpenThermMessageID)id)
     {
     case OpenThermMessageID::Status:
         boiler_status = response & 0xFF;
@@ -537,7 +537,7 @@ void clearItem(ChartItem* item)
 unsigned int buildRequest(byte req_idx)
 {
     uint16_t status;
-    byte id = requests[req_idx];
+    OpenThermMessageID id = requests[req_idx];
     switch (id)
     {
     case OpenThermMessageID::Status:
